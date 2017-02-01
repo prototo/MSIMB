@@ -1,5 +1,5 @@
-images/*
-static/images/*
+msimb/images/*
+msimb/static/images/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
