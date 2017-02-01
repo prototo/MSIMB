@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% if note %}
+    <div class="note">
+      <h2>{{ note.id }}</h2>
+      <p>{{ note.text }}</p>
+      <p>{{ note.image }}</p>
+    </div>
+    <div class="actions">
+      <form method="delete">
+        <input type="submit" value="Delete note (no confirmation)" />
+      </form>
+    </div>
+  {% endif %}
+{% endblock %}

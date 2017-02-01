@@ -1,0 +1,29 @@
+$font-size: 20px;
+$black: #333;
+$white: #F9F9F9;
+
+html, body {
+    background: $white;
+    color: $black;
+    font-size: $font-size;
+    margin: 0 auto;
+    padding: 1em;
+    width: 100%;
+
+    &, * {
+      box-sizing: border-box;
+    }
+}
+
+img#site_banner {
+    display: block;
+    height: auto;
+    margin: 1em auto 3em auto;
+    max-height: 70%;
+    max-width: 70%;
+    width: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-55%);
+}

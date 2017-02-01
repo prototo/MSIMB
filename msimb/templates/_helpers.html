@@ -1,0 +1,5 @@
+{% macro flash_messages() %}
+        {% with messages = get_flashed_messages() %}
+            {% include "flashes.html" %}
+        {% endwith %}
+{% endmacro %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% from "_formhelpers.html" import render_field %}
+
+{% block content %}
+  <form method=POST>
+    <input name="username" placeholder="Username"></input>
+    <input name="password" type="password" placeholder="Password"></input>
+    <input type="submit"></input>
+  </form>
+{% endblock %}

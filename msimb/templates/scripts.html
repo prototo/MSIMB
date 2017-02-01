@@ -1,0 +1,43 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/spf/2.4.0/spf.js"></script>
+<script>
+    spf.init();
+</script>
+
+<script>
+    $('body').on('submit', 'form[method="delete"]', function(event) {
+        var action = $(this).attr('action') || window.location;
+        $.ajax({
+                url: action,
+                method: 'delete'
+            })
+            .done(function(res, status, xhr) {
+                if (res.redirect) {
+                    window.location = res.redirect;
+                }
+            });
+
+        event.preventDefault();
+    });
+
+    var flash_holder = $('#flashes');
+    var flash_timer = null;
+
+    // display flash message when page changes
+    function flash_fade() {
+        clearTimeout(flash_timer);
+        flash_holder.show();
+        flash_timer = setTimeout(function() {
+            flash_holder.fadeOut();
+        }, 1000);
+    }
+    $(document).on('spfdone', flash_fade);
+    flash_fade();
+
+    // too fast!
+    // $(document).on('spfclick', function(event) {
+    //     $('div#content').style({
+    //         'opacity': 0
+    //     });
+    // });
+</script>

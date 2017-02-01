@@ -1,0 +1,24 @@
+{% if not spf %}
+    {% extends "base.html" %}
+{% endif %}
+
+{% from "_formhelpers.html" import render_field %}
+
+{% block content %}
+  <form method="POST" action="/notes">
+    <dl>
+      {{ form.csrf_token }}
+      {{ render_field(form.text) }}
+      {{ render_field(form.image) }}
+      <dd><input type="submit" value="Post" /></dd>
+    </dl>
+  </form>
+
+  <ul class="notes">
+    {% for note in notes %}
+      <li>
+        {{ note.text }}
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

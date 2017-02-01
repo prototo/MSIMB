@@ -1,0 +1,167 @@
+@import 'https://fonts.googleapis.com/css?family=Hind:300';
+
+@border-radius: 1em;
+@font-size: 20px;
+@line-height: 1.5em;
+
+@black: #333;
+@white: #F9F9F9;
+@primary: rgb(121, 197, 232);
+@secondary: rgb(241, 139, 183);
+
+html {
+  background: @white;
+  color: @black;
+  font-family: 'Hind', sans-serif;
+  font-size: @font-size;
+  line-height: @line-height;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  // max-width: 720px;
+  margin: 0 auto;
+  padding: 1em;
+  width: 100%;
+
+  * {
+      box-sizing: border-box;
+  }
+}
+
+html, body {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+ul#flashes {
+    background: fadeout(@secondary, 50%);
+    color: @white;
+    left: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    right: 0;
+    text-align: center;
+    top: 0;
+}
+
+header#site-header {
+    text-align: center;
+}
+
+nav#navigation {
+    text-align: center;
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            display: inline-block;
+            margin: 0 .5em;
+        }
+    }
+}
+
+a, a:visited {
+    color: @primary;
+    text-decoration: none;
+}
+
+div#content {
+    margin: 0 auto;
+    max-width: 720px;
+}
+
+img#site_banner {
+    display: block;
+    height: auto;
+    margin: 1em auto 3em auto;
+    max-height: 70%;
+    max-width: 70%;
+    width: auto;
+}
+
+div.row {
+    clear: both;
+
+    img {
+        max-height: 100%;
+        max-width: 100%;
+    }
+
+    & > div {
+        display: inline-block;
+        padding: .5em;
+    }
+}
+
+div.part {
+    width: 25%;
+}
+
+div.half {
+    width: 50%;
+}
+
+div.most {
+    width: 75%;
+}
+
+@icons: 6;
+@icons-left: 100 / (@icons + 1);
+
+.loop(@counter) when (@counter > 0) {
+    .loop(@counter - 1);
+
+    li:nth-child(@{counter}) {
+        left: unit(@icons-left * @counter, %);
+    }
+}
+
+ul#float_nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    display: block;
+    height: 5em;
+
+    .loop(@icons);
+
+    li {
+        position: absolute;
+        transform: translateX(-50%);
+
+        a {
+            display: block;
+            animation: WIGGLE infinite 4s;
+        }
+    }
+
+    img, span {
+        display: block;
+        margin: auto;
+    }
+
+    img {
+        max-width: 5em;
+        max-height: 5em;
+    }
+}
+
+@keyframes WIGGLE {
+    0% {
+        transform: rotateZ(-10deg);
+    }
+    50% {
+        transform: rotateZ(10deg);
+    }
+    100% {
+        transform: rotateZ(-10deg);
+    }
+}
